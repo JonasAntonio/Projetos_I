@@ -1,0 +1,72 @@
+curl -fsLS https://get.docker.com/ | sh instala docker no linux
+sudo service docker start -> inicia o docker
+docker run -ti ubuntu -> baixa a img
+docker images -> verifica as imagens
+ctrl p q para sair
+docker ps -> ver o que está rodando
+docker attach id -> entra na maquina
+docker stop id
+docker rm id
+ip padrao 172.17.0.1
+apache usa a porta 80
+Dockerfile{
+	FROM ubuntu
+
+	LABEL description="Servidor Web"
+
+	MAINTAINER jonas
+
+	RUN apt-get update && \
+	    apt-get install -y apache2 nmap wget nano links
+}
+docker build -t serverweb/ces:1.0 .
+
+docker rmi -f id -> remove imagem
+
+docker run -ti -p 80:80 serverweb/ces:1.0
+
+service apache2 start -> dentro da maquina web
+entrar no navegador:
+	no windows 192.168.99.100
+	no linux localhost
+alterar html:
+	cd /var/www/html
+	pico index.html
+
+
+
+docker run -d --name bdserver -e MYSQL_ROOT_PASSWORD=123456 mysql/mysql-server:latest -> maquina mysql
+
+docker run –ti –p 80:80 –-name webserver –v /home/serve
+rWeb/html:/var/lib/html serverweb/ces:1.0 - maquina web
+
+docker exec -it bdserver bash -> entra na maquina pronta em modo de prompt
+mysql -uroot -p
+
+mysql> create database teste;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use teste;
+Database changed
+mysql> create table usuario (
+    -> id INT AUTO_INCREMENT PRIMARY KEY,
+    -> nome VARCHAR(150) NOT NULL);
+Query OK, 0 rows affected (0.30 sec)
+
+mysql> insert into usuario values (1,'Zezin'); 
+Query OK, 1 row affected (0.10 sec)
+
+mysql> Select*from usuario;
++----+-------+
+| id | nome  |
++----+-------+
+|  1 | Zezin |
++----+-------+
+1 row in set (0.00 sec)
+
+exit -> sai do mysql
+
+
+
+
+

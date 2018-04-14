@@ -1,0 +1,9 @@
+curl -fsLS https://get.docker.com/ | sh instala docker no linux
+sudo service docker start -  inicia o docker
+docker run -ti ubuntu - baixa a img
+docker images -verifica as imagens
+ctrl p q para sair
+docker ps - ver o que está rodando
+docker attach id - entra na maquina
+docker stop id
+docker rm id
